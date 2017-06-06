@@ -1,9 +1,11 @@
 (function() {
-    HomeCtrl.$inject = [];
-    function HomeCtrl() {
+//    HomeCtrl.$inject = [ListService];
+    function HomeCtrl(ListService) {
+      this.title = "| BlocItOff |";
+      this.items = ListService.all;
     }
 
     angular
         .module('blocitoff')
-        .controller('HomeController', [HomeCtrl]);
+        .controller('HomeController', ['ListService', HomeCtrl]);
 })();
