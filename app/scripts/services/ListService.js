@@ -7,7 +7,7 @@
       all: items,
       addItem: function(itemName) {
             items.$add({
-                name: itemName,
+                $value: itemName,
             });
       },
     };

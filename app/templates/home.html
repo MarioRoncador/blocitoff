@@ -1,7 +1,7 @@
 <section class="title">
   <h1>{{ home.title }}</h1>
   <div  ng-repeat="item in home.items">
-    <h5>{{ item.$id }}</h5>
+    <h5>Item-{{ $index+1 }}</h5>
     <button>{{ item.$value }}</button>
   </div>
 </section>
