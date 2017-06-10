@@ -3,9 +3,15 @@
 <head lang="en">
   <meta charset="UTF-8">
   <title>Blocitoff</title>
-  <link rel="stylesheet" href="/styles/main.css">
+  <link rel="stylesheet" type="text/css" href="/styles/main.css">
 </head>
 <body>
+  <nav class="navbar"> <!-- navigation bar -->
+           <a href="index.html" class="logo"></a>
+    <div class="links-container">
+        <a ui-sref="home" class="navbar-link">HOME</a>
+     </div>
+     </nav>
   <ui-view></ui-view>
 
   <!-- Angular -->
@@ -21,18 +27,26 @@
 
   <!-- <script src="https://www.gstatic.com/firebasejs/4.1.1/firebase.js"></script> -->
   <script>
-    // Initialize Firebase
-    var config = {
-      apiKey: "AIzaSyAE-tcJHLfJYPpYUEYme6ueKskBxTMb5ac",
-      authDomain: "blocitoff-e3293.firebaseapp.com",
-      databaseURL: "https://blocitoff-e3293.firebaseio.com",
-      projectId: "blocitoff-e3293",
-      storageBucket: "blocitoff-e3293.appspot.com",
-      messagingSenderId: "669339926613"
-    };
-    firebase.initializeApp(config);
+  // Initialize Firebase
+  var config = {
+    apiKey: "AIzaSyAE-tcJHLfJYPpYUEYme6ueKskBxTMb5ac",
+    authDomain: "blocitoff-e3293.firebaseapp.com",
+    databaseURL: "https://blocitoff-e3293.firebaseio.com",
+    projectId: "blocitoff-e3293",
+    storageBucket: "blocitoff-e3293.appspot.com",
+    messagingSenderId: "669339926613"
+  };
+  firebase.initializeApp(config);
   </script>
 
+  <!-- jQuery -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+
+  <!-- Bootstrap -->
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+  <!-- Angualar UI Bootstrap -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/2.3.0/ui-bootstrap-tpls.min.js"></script>
   <!-- Application Files -->
   <script src="/scripts/AppModule.js"></script>
   <script src="/scripts/controllers/HomeController.js"></script>

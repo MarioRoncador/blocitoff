@@ -1,7 +1,26 @@
-<section class="title">
-  <h1>{{ home.title }}</h1>
-  <div  ng-repeat="item in home.items">
-    <h5>Item-{{ $index+1 }}</h5>
-    <button>{{ item.$value }}</button>
+<h1>{{ home.title }}</h1>
+<div class="panel-body">
+  <ul class="list-group">
+    <div  ng-repeat="item in home.items">
+      <li class="list-group-item">
+        <div class="checkbox">
+          <input type="checkbox" id="checkbox" />
+          <h5>Item-{{ $index+1 }} - {{ item.$value }}</h5>
+          <div class="pull-right action-buttons">
+            <span class="glyphicon glyphicon-pencil">Edit</a>
+              <class="trash"><span class="glyphicon glyphicon-trash">Delete</a>
+              </div>
+            </input>
+          </div>
+        </li>
+      </div>
+    </ul>
   </div>
-</section>
+  <div class="panel-footer">
+    <div class="row">
+      <div class="col-md-6">
+        <h6>Total Count <span class="label label-info">{{$index}}</span></h6>
+                // Need to implement a count that works
+      </div>
+    </div>
+  </div>
