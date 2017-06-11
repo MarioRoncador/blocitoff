@@ -1,26 +1,40 @@
 <h1>{{ home.title }}</h1>
+  <h6>{{home.timeNow | date: "medium" }}</h6>
 <div class="panel-body">
   <ul class="list-group">
-    <div  ng-repeat="item in home.items">
+    <div  ng-repeat="item in home.items" ng-hide="home.isExpired(item) || item.completed === true">
       <li class="list-group-item">
         <div class="checkbox">
           <input type="checkbox" id="checkbox" />
-          <h5>Item-{{ $index+1 }} - {{ item.$value }}</h5>
-          <div class="pull-right action-buttons">
+          <h5>{{ $index+1 }} - {{ item.name }}</h5>
+          <h6>completed: {{ item.completed }}</h6>
+          <h6>{{ item.timeCreated | date: "medium" }}</h6>
+          <h6>{{ item.expDate | date: "medium" }}</h6>
+  <!--         <div class="pull-right action-buttons">
             <span class="glyphicon glyphicon-pencil">Edit</a>
               <class="trash"><span class="glyphicon glyphicon-trash">Delete</a>
-              </div>
+              </div> -->
             </input>
           </div>
         </li>
       </div>
     </ul>
   </div>
+  <div class="form-group">
+    <label for="taskDescription">New Task</label>
+    <input type="text" class="form-control" id="itemName" ng-model="itemName" placeholder="Add new task here">
+  </div>
+  <div ng-controller="HomeController">
+    <div class="form-group">
+      <button ng-click="home.addItem(itemName)">ADD</button>
+    </div>
+  </div>
   <div class="panel-footer">
     <div class="row">
       <div class="col-md-6">
-        <h6>Total Count <span class="label label-info">{{$index}}</span></h6>
-                // Need to implement a count that works
+        <div  ng-repeat="item in home.items" ng-show="$last">
+          <h6>Total Tasks: <span class="label label-info">{{$index+1}}</span></h6>
+        </div>
       </div>
     </div>
   </div>

@@ -5,9 +5,13 @@
 
     return {
       all: items,
+
       addItem: function(itemName) {
             items.$add({
-                $value: itemName,
+                name: itemName,
+                timeCreated: (new Date()).getTime(),
+                completed: false,
+                expDate: ((new Date()).getTime() + 604800000)
             });
       },
     };

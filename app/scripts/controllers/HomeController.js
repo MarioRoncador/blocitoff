@@ -1,12 +1,25 @@
 (function() {
-//    HomeCtrl.$inject = [ListService];
-    function HomeCtrl(ListService) {
-      this.title = "| Current Tasks |";
-      this.items = ListService.all;
-//      ListService.addItem("Rest");
+  //    HomeCtrl.$inject = [ListService];
+  function HomeCtrl($scope, ListService) {
+    var home = this;
+    this.timeNow = new Date().getTime();
+    this.title = "| Current Tasks |";
+    this.items = ListService.all;
+
+    this.addItem = function(itemName){
+      console.log(itemName);
+      console.log(home.timeNow);
+      ListService.addItem(itemName);
     }
 
-    angular
-        .module('blocitoff')
-        .controller('HomeController', ['ListService', HomeCtrl]);
+    home.isExpired = function(item){
+      console.log("Hide functionality works!");
+      var expired =  item.expDate < home.timeNow;
+      return expired;
+    }
+  };
+
+  angular
+  .module('blocitoff')
+  .controller('HomeController', ['$scope','ListService', HomeCtrl]);
 })();
