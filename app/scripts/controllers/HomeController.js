@@ -7,13 +7,13 @@
     this.items = ListService.all;
 
     this.addItem = function(itemName){
-      console.log(itemName);
+      console.log(itemName+ "has been created");
       console.log(home.timeNow);
       ListService.addItem(itemName);
     }
 
     home.isExpired = function(item){
-      console.log("Hide functionality works!");
+      console.log("Hide/show functionality works!");
       var expired =  item.expDate < home.timeNow;
       return expired;
     }
