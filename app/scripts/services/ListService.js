@@ -9,8 +9,10 @@
       addItem: function(itemName) {
             items.$add({
                 name: itemName,
-                timeCreated: (new Date()).getTime(),
+                description: itemDesc,
+                priority: "", //implement a dropdown list
                 completed: false,
+                timeCreated: (new Date()).getTime(),
                 expDate: ((new Date()).getTime() + 604800000)
             });
       },

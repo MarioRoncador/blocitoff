@@ -16,6 +16,11 @@
       url: '/',
       controller: 'HomeController as home',
       templateUrl: '/templates/history.html'
+/*    })
+    .state('modal', {
+      url: '/',
+      controller: 'modalController as modal',
+      templateUrl: '/templates/modal.html' */
     });
   }
 

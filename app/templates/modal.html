@@ -1,0 +1,38 @@
+<div class="modal-header">
+    <h3 class="modal-title" id="modal-title">{{modal.MODAL_TITLE}}</h3>
+    <button class="btn-link" ng-if="$modal.debuggable" ng-click="$modal.toggleDebug()">Toggle Debug</button>
+</div>
+<form name="newRoomForm" novalidate>
+    <div class="modal-body" id="modal-body">
+        <div class="form-group">
+            <input type="text" class="form-control" id="itemName" name="itemName" ng-model="itemName" placeholder="New task name" required>
+            <p></p>
+            <input type="text" class="form-control" id="itemDesc" name="itemDesc" ng-model="itemDesc" placeholder="New task description">
+            <p></p>
+            <select ng-model="modal.priority" ng-options="x for x in priority"></select>
+        </div>
+        <button class="btn-link" ng-click="modal.reset()">Reset</button>
+          <!-- to evaluate if it's needed
+        <pre ng-if="modal.debug">{{ $modal.newRoom | json }}</pre>  -->
+    </div>
+    <div class="modal-footer">
+        <button class="btn btn-primary" type="button" ng-click="$scope.addItem(itemName)">{{ modal.OK_TEXT}}</button>
+        <button class="btn btn-warning" type="button" ng-click="modal.cancel()">{{ modal.CANCEL_TEXT }}</button>
+    </div>
+</form>
+
+<!--
+<div ng-app="myApp" ng-controller="myCtrl">
+
+<select ng-model="selectedName" ng-options="x for x in names">
+</select>
+
+</div>
+
+<script>
+var app = angular.module('myApp', []);
+app.controller('myCtrl', function($scope) {
+    $scope.names = ["Emil", "Tobias", "Linus"];
+});
+</script>
+ -->
