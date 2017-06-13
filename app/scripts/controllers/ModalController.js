@@ -1,5 +1,5 @@
 (function() {
-    function ModalController($uibModalInstance) {
+    function ModalController($uibModalInstance, $scope, ListService) {
     //    var DEBUGABLE = false;
     //    var DEBUG_ENABLED = true;
         var CANCEL_TEXT = 'Cancel';
@@ -27,22 +27,22 @@
         }
 
         function cancel() {
-            $uibModalInstance.dismiss('cancel');
+            console.log("Dismissing form");
+            $uibModalInstance.close('cancel');
         }
 
         function resetForm() {
             console.log("Resetting form");
-            vm.newItem = angular.copy(vm.newItemReset);
+        //    $uibModalInstance.reset();
         }
 
-        function submitForm() {
-            console.log("Submitting form");
-            $uibModalInstance.close(vm.newRoom);
+        function submitForm(itemName) {
+            console.log("Submitting form "+itemName);
+            $uibModalInstance.close(vm.newItem);
         }
 
-        vm.priority = function($scope) {
-            $scope.priority = ["High", "Medium", "Low"];
-        }
+        $scope.options = ["High", "Medium", "Low"];
+        
 
     //    function toggleDebug() {
     //        console.log("Toggleing debug mode");
@@ -52,5 +52,5 @@
 
     angular
         .module('blocitoff')
-        .controller('ModalController', ['$uibModalInstance', ModalController]);
+        .controller('ModalController', ['$uibModalInstance', '$scope', 'ListService', ModalController]);
 })();

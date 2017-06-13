@@ -1,31 +1,32 @@
 <h1>{{ home.title }}</h1>
-  <h6>{{home.timeNow | date: "medium" }}</h6>
+<h6>{{home.timeNow | date: "medium" }}</h6>
 <div class="panel-body">
   <ul class="list-group">
     <div  ng-repeat="item in home.items" ng-show="home.isExpired(item) || item.completed === true">
       <li class="list-group-item">
-        <div class="checkbox">
-          <input type="checkbox" id="checkbox" />
+        <div class="tasks">
           <h5>{{ $index+1 }} - {{ item.name }}</h5>
           <h6>completed: {{ item.completed }}</h6>
           <h6>{{ item.timeCreated | date: "medium" }}</h6>
           <h6>{{ item.expDate | date: "medium" }}</h6>
-  <!--         <div class="pull-right action-buttons">
-            <span class="glyphicon glyphicon-pencil">Edit</a>
-              <class="trash"><span class="glyphicon glyphicon-trash">Delete</a>
-              </div> -->
-            </input>
-          </div>
-        </li>
+          <!--         <div class="pull-right action-buttons">
+          <span class="glyphicon glyphicon-pencil">Edit</a>
+          <class="trash"><span class="glyphicon glyphicon-trash">Delete</a>
+        </div> -->
+        <button ng-click='home.button() ; activity.seen = !activity.seen'>
+          <span>{{activity.seen ? 'Mark as complete' : 'Mark as active'}}</span>
+        </button>
       </div>
-    </ul>
+    </li>
   </div>
-  <div class="panel-footer">
-    <div class="row">
-      <div class="col-md-6">
-        <div  ng-repeat="item in home.items" ng-show="$last">
-          <h6>Total Tasks: <span class="label label-info">{{$index+1}}</span></h6>
-        </div>
+</ul>
+</div>
+<div class="panel-footer">
+  <div class="row">
+    <div class="col-md-6">
+      <div  ng-repeat="item in home.items" ng-show="$last">
+        <h6>Total Tasks: <span class="label label-info">{{$index+1}}</span></h6>
       </div>
     </div>
   </div>
+</div>

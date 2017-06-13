@@ -6,7 +6,14 @@
     this.title = "| Current Tasks |";
     this.items = ListService.all;
 
-
+    home.button = function(completed){
+      console.log("function works");
+      if(completed==false){
+        return true;
+      }else{
+        return false;
+      }
+    }
 
     this.openModal = function(size, parentSelector) {
       console.log("Attempting to open modal window.");
@@ -22,15 +29,16 @@
 
       //put this function inside the modal function: implement the link to db when Submit
 
-      $scope.addItem = function(itemName){
-        console.log(itemName+ "has been created");
-        console.log(home.timeNow);
-        ListService.addItem(itemName);
-      }
+
     };
 
+    $scope.addItem = function(itemName){
+      console.log(itemName+ "has been created");
+      console.log(home.timeNow);
+      ListService.addItem(itemName);
+    }
+
     home.isExpired = function(item){
-      console.log("Hide/show functionality works!");
       var expired =  item.expDate < home.timeNow;
       return expired;
     }
