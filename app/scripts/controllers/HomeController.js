@@ -1,18 +1,15 @@
 (function() {
   //    HomeCtrl.$inject = [ListService];
-  function HomeCtrl($uibModal, $scope, ListService) {
+  function HomeCtrl($uibModal, ListService) {
     var home = this;
     this.timeNow = new Date().getTime();
-    this.title = "| Current Tasks |";
+    this.titleActive = "Current Tasks";
+    this.titleHistory = "Past and Completed Tasks";
     this.items = ListService.all;
 
-    home.button = function(completed){
+    home.completed = function(task) {
       console.log("function works");
-      if(completed==false){
-        return true;
-      }else{
-        return false;
-      }
+      return task.completed == true
     }
 
     this.openModal = function(size, parentSelector) {
@@ -28,15 +25,18 @@
       });
 
       //put this function inside the modal function: implement the link to db when Submit
-
+      modalInstance.result.then(
+        function(result) {
+          console.log(result);
+          ListService.addItem(result.name, result.desc, result.priority);
+        }, function(error) {
+          console.error("Something bad happened: ", error);
+        }
+      )
 
     };
 
-    $scope.addItem = function(itemName){
-      console.log(itemName+ "has been created");
-      console.log(home.timeNow);
-      ListService.addItem(itemName);
-    }
+
 
     home.isExpired = function(item){
       var expired =  item.expDate < home.timeNow;
@@ -46,5 +46,5 @@
 
   angular
   .module('blocitoff')
-  .controller('HomeController', ['$uibModal','$scope','ListService', HomeCtrl]);
+  .controller('HomeController', ['$uibModal', 'ListService', HomeCtrl]);
 })();

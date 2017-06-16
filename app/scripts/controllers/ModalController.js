@@ -1,24 +1,25 @@
 (function() {
-    function ModalController($uibModalInstance, $scope, ListService) {
-    //    var DEBUGABLE = false;
-    //    var DEBUG_ENABLED = true;
+    function ModalController($uibModalInstance, ListService) {
         var CANCEL_TEXT = 'Cancel';
-        var OK_TEXT = 'Submit';
+        var SUBMIT_TEXT = 'Submit';
         var TITLE = 'Create new task';
+        var TASK_PRIORITY_HIGH = 'High';
+        var TASK_PRIORITY_MEDIUM = 'Medium';
+        var TASK_PRIORITY_LOW = 'Low';
         var vm = this;
+        var ERROR = "No task created - modal dismissed";
 
         vm.CANCEL_TEXT = CANCEL_TEXT;
         vm.MODAL_TITLE = TITLE;
-        vm.OK_TEXT = OK_TEXT;
+        vm.SUBMIT = SUBMIT_TEXT;
         vm.cancel = cancel;
-    //    vm.debug = DEBUGABLE && DEBUG_ENABLED;
-    //    vm.debuggable = DEBUGABLE;
-        vm.newItem = {};
+        vm.newItem = {}; // is the object with the information of the specific instance
         vm.newItemReset = "";
-        vm.ok = submitForm;
+        vm.submit = submitForm;
         vm.reset = resetForm;
         vm.submit = submitForm;
-    //    vm.toggleDebug = toggleDebug;
+        vm.options = [TASK_PRIORITY_HIGH, TASK_PRIORITY_MEDIUM, TASK_PRIORITY_LOW];
+        vm.error = ERROR;
 
         activate();
 
@@ -28,29 +29,22 @@
 
         function cancel() {
             console.log("Dismissing form");
-            $uibModalInstance.close('cancel');
+            $uibModalInstance.dismiss(vm.error);
         }
 
         function resetForm() {
             console.log("Resetting form");
-        //    $uibModalInstance.reset();
+
         }
 
-        function submitForm(itemName) {
-            console.log("Submitting form "+itemName);
+        function submitForm() {
+            console.log(vm.newItem);
+            console.log("Submitting form "+vm.newItem.name);
             $uibModalInstance.close(vm.newItem);
         }
-
-        $scope.options = ["High", "Medium", "Low"];
-        
-
-    //    function toggleDebug() {
-    //        console.log("Toggleing debug mode");
-    //        vm.debug = !vm.debug;
-    //    }
     }
 
     angular
         .module('blocitoff')
-        .controller('ModalController', ['$uibModalInstance', '$scope', 'ListService', ModalController]);
+        .controller('ModalController', ['$uibModalInstance', 'ListService', ModalController]);
 })();

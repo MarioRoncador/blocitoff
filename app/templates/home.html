@@ -1,4 +1,4 @@
-<h1>{{ home.title }}</h1>
+<div class="title">{{ home.titleActive }}</div>
 <h6>{{home.timeNow | date: "medium" }}</h6>
 <div class="panel-body">
   <ul class="list-group">
@@ -6,15 +6,14 @@
       <li class="list-group-item">
         <div class="task">
 
-          <h5>{{ $index+1 }} - {{ item.name }}</h5>
+          <h5>{{ $index+1 }} - <mark>{{ item.name }}</mark></h5>
+          <h6><em>{{ item.description }}</em></h6>
           <h6>completed: {{ item.completed }}</h6>
-          <h6>{{ item.timeCreated | date: "medium" }}</h6>
-          <h6>{{ item.expDate | date: "medium" }}</h6>
-          <!--         <div class="pull-right action-buttons">
-          <span class="glyphicon glyphicon-pencil">Edit</a>
-          <class="trash"><span class="glyphicon glyphicon-trash">Delete</a>
-        </div> -->
-        <button ng-click='home.button(completed); activity.seen = !activity.seen'>
+          <h6><small>created: {{ item.timeCreated | date: "medium" }}</small></h6>
+          <h6><small>expires: {{ item.expDate | date: "medium" }}</small></h6>
+          <h6><small>priority: </small>{{ item.priority }}</h6>
+
+        <button ng-model="$scope.completed" ng-click="items.$save(task); activity.seen = !activity.seen">
           <span>{{activity.seen ? 'Mark as active' : 'Mark as complete'}}</span>
         </button>
 
@@ -31,7 +30,7 @@
 <div ng-controller="HomeController">
   <div class="form-group">
     <!-- Replace the current function with : home.openModal() - home.addItem(itemName) in order to open up the modal-->
-    <button ng-click="home.openModal()">Add new task</button>
+    <button button type="button" class="btn btn-info" ng-click="home.openModal()">Add new task</button>
   </div>
 </div>
 <div class="panel-footer">

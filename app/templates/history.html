@@ -1,14 +1,16 @@
-<h1>{{ home.title }}</h1>
+<h1 class="title">{{ home.titleHistory }}</h1>
 <h6>{{home.timeNow | date: "medium" }}</h6>
 <div class="panel-body">
   <ul class="list-group">
     <div  ng-repeat="item in home.items" ng-show="home.isExpired(item) || item.completed === true">
       <li class="list-group-item">
         <div class="tasks">
-          <h5>{{ $index+1 }} - {{ item.name }}</h5>
+          <h5><s>{{ $index+1 }} - {{ item.name }}</s></h5>
+          <h6><em>{{ item.description }}</em></h6>
           <h6>completed: {{ item.completed }}</h6>
-          <h6>{{ item.timeCreated | date: "medium" }}</h6>
-          <h6>{{ item.expDate | date: "medium" }}</h6>
+          <h6><small>created: {{ item.timeCreated | date: "medium" }}</small></h6>
+          <h6><small>expires: {{ item.expDate | date: "medium" }}</small></h6>
+          <h6><small>priority: </small>{{ item.priority }}</h6>
           <!--         <div class="pull-right action-buttons">
           <span class="glyphicon glyphicon-pencil">Edit</a>
           <class="trash"><span class="glyphicon glyphicon-trash">Delete</a>

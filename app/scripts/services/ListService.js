@@ -5,21 +5,22 @@
 
     return {
       all: items,
-
-      addItem: function(itemName) {
-            items.$add({
-                name: itemName,
-                description: itemDesc,
-                priority: "", //implement a dropdown list
-                completed: false,
-                timeCreated: (new Date()).getTime(),
-                expDate: ((new Date()).getTime() + 604800000)
-            });
-      },
+      addItem: addItem,
     };
+
+    function addItem(itemName, itemDesc, priority) {
+      items.$add({
+        name: itemName,
+        description: itemDesc,
+        priority: priority,
+        completed: false,
+        timeCreated: (new Date()).getTime(),
+        expDate: ((new Date()).getTime() + 604800000)
+      });
+    }
   }
 
   angular
-    .module('blocitoff')
-    .factory('ListService', ['$firebaseArray', List]);
+  .module('blocitoff')
+  .factory('ListService', ['$firebaseArray', List]);
 })();

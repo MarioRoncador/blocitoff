@@ -7,3 +7,4 @@
 .panel-body input[type=checkbox]:checked + label { text-decoration: line-through;color: rgb(128, 144, 160); }
 .list-group-item:hover, a.list-group-item:focus {text-decoration: none;background-color: rgb(245, 245, 245);}
 .list-group { margin-bottom:0px; }
+.title { color: #111; font-family: 'Helvetica Neue', sans-serif; background-color: 		#F5F5DC; font-size: 30px; font-weight: bold; letter-spacing: -1px; line-height: 1; text-align: left; }

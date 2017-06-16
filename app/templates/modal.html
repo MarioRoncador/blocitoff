@@ -1,22 +1,21 @@
 <div class="modal-header">
   <h3 class="modal-title" id="modal-title">{{modal.MODAL_TITLE}}</h3>
-  <button class="btn-link" ng-if="$modal.debuggable" ng-click="$modal.toggleDebug()">Toggle Debug</button>
 </div>
 <form name="newItemForm" novalidate>
   <div class="modal-body" id="modal-body">
     <div class="form-group">
-      <input type="text" class="form-control" id="itemName" ng-model="itemName" placeholder="New task name" required>
+      <input type="text" class="form-control" id="itemName" ng-model="modal.newItem.name" placeholder="New task name" >
       <p></p>
-      <input type="text" class="form-control" id="itemDesc" ng-model="itemDesc" placeholder="New task description">
+      <input type="text" class="form-control" id="itemDesc" ng-model="modal.newItem.desc" placeholder="New task description" >
       <p></p>
-      <select ng-model="priority" ng-options="o as o for o in options"></select>
+      <select ng-model="modal.newItem.priority" ng-options="o as o for o in modal.options"></select>
     </div>
     <button class="btn-link" ng-click="modal.reset()">Reset</button>
     <!-- to evaluate if it's needed
     <pre ng-if="modal.debug">{{ $modal.newRoom | json }}</pre>  -->
   </div>
   <div class="modal-footer">
-    <button class="btn btn-primary" type="button" ng-click="modal.ok()">{{ modal.OK_TEXT}}</button>
+    <button class="btn btn-primary" type="button" ng-click="modal.submit()">{{ modal.SUBMIT}}</button>
     <button class="btn btn-warning" type="button" ng-click="modal.cancel()">{{ modal.CANCEL_TEXT }}</button>
   </div>
 </form>
