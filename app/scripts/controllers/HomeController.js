@@ -7,9 +7,18 @@
     this.titleHistory = "Past and Completed Tasks";
     this.items = ListService.all;
 
-    home.completed = function(task) {
-      console.log("function works");
-      return task.completed == true
+    this.completed = function(item) {
+      console.log(item.completed);
+      if(item.completed == true || item.expDate < home.timeNow){
+        item.completed = false;
+        item.expDate = ((new Date()).getTime() + 604800000);
+        ListService.updateItem(item);
+        console.log(item);
+      }else{
+        item.completed = true;
+        ListService.updateItem(item);
+        console.log(item);
+      }
     }
 
     this.openModal = function(size, parentSelector) {
@@ -24,7 +33,6 @@
         resolve: {}
       });
 
-      //put this function inside the modal function: implement the link to db when Submit
       modalInstance.result.then(
         function(result) {
           console.log(result);
@@ -36,9 +44,7 @@
 
     };
 
-
-
-    home.isExpired = function(item){
+    this.isExpired = function(item){
       var expired =  item.expDate < home.timeNow;
       return expired;
     }

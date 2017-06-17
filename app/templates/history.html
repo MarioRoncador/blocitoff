@@ -1,5 +1,5 @@
 <h1 class="title">{{ home.titleHistory }}</h1>
-<h6>{{home.timeNow | date: "medium" }}</h6>
+<h6><em>Today:</em> {{home.timeNow | date: "medium" }}</h6>
 <div class="panel-body">
   <ul class="list-group">
     <div  ng-repeat="item in home.items" ng-show="home.isExpired(item) || item.completed === true">
@@ -14,10 +14,11 @@
           <!--         <div class="pull-right action-buttons">
           <span class="glyphicon glyphicon-pencil">Edit</a>
           <class="trash"><span class="glyphicon glyphicon-trash">Delete</a>
-        </div> -->
+        </div>
         <button ng-click='home.button() ; activity.seen = !activity.seen'>
           <span>{{activity.seen ? 'Mark as complete' : 'Mark as active'}}</span>
-        </button>
+        </button> -->
+          <button class="btn btn-warning btn-xs" ng-click="home.completed(item)"><span>Mark as active</span></button>
       </div>
     </li>
   </div>

@@ -1,5 +1,5 @@
 <div class="title">{{ home.titleActive }}</div>
-<h6>{{home.timeNow | date: "medium" }}</h6>
+<h6><em>Today:</em> {{home.timeNow | date: "medium" }}</h6>
 <div class="panel-body">
   <ul class="list-group">
     <div  ng-repeat="item in home.items" ng-hide="home.isExpired(item) || item.completed === true">
@@ -13,10 +13,7 @@
           <h6><small>expires: {{ item.expDate | date: "medium" }}</small></h6>
           <h6><small>priority: </small>{{ item.priority }}</h6>
 
-        <button ng-model="$scope.completed" ng-click="items.$save(task); activity.seen = !activity.seen">
-          <span>{{activity.seen ? 'Mark as active' : 'Mark as complete'}}</span>
-        </button>
-
+        <button class="btn btn-success btn-xs" ng-click="home.completed(item)"><span>Complete</span></button>
       </div>
     </li>
   </div>
