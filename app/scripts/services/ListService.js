@@ -6,7 +6,7 @@
     return {
       all: items,
       addItem: addItem,
-      update: updateItem,
+      updateItem: updateItem,
     };
 
     function addItem(itemName, itemDesc, priority) {
@@ -21,7 +21,7 @@
     }
 
     function updateItem(item) {
-      item.$save(item.completed);
+        items.$save(item)
     }
 
   }
